@@ -22,6 +22,13 @@
 	display: block;
 }
 
+/* products */
+.products_item {
+	overflow: hidden;
+}
+.products_item img {
+	width: 100%;
+}
 
 /* footer */
 .footer {
