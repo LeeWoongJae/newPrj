@@ -2,11 +2,9 @@ package com.mall.user;
 
 
 
-import static com.mall.common.DAO.conn;
-
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,8 +13,9 @@ import com.mall.common.DAOclose;
 
 
 
-public class UserServiceImpl extends DAO implements UserService {
+public class UserServiceImpl implements UserService {
 		private DAOclose daOclose = new DAOclose();
+		Connection conn = DAO.getInstance();
 		private PreparedStatement psmt ; 
 		private ResultSet rs;
 

@@ -1,5 +1,6 @@
 package com.mall.review;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,8 +12,8 @@ import com.mall.common.DAOclose;
 
 
 
-public class ReviewServiceImpl extends DAO implements ReviewService {
-	
+public class ReviewServiceImpl implements ReviewService {
+	Connection conn = DAO.getInstance();
 	private DAOclose daOclose = new DAOclose();
 	private PreparedStatement psmt ; 
 	private ResultSet rs;

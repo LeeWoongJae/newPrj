@@ -1,5 +1,6 @@
 package com.mall.orderDetail;
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -8,9 +9,9 @@ import java.util.List;
 import com.mall.common.DAO;
 import com.mall.common.DAOclose;
 
-public class OrderDetailServiceImpl extends DAO implements OrderDetailService {
+public class OrderDetailServiceImpl  implements OrderDetailService {
 	private DAOclose daOclose = new DAOclose();
-	
+	Connection conn = DAO.getInstance();
 	PreparedStatement psmt ; 
 	ResultSet rs;
 	
