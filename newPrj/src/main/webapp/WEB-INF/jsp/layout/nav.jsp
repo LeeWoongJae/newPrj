@@ -19,6 +19,9 @@
         <li class="nav-item">
           <a class="nav-link" href="#">신상품</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="notice.do">공지사항</a>
+        </li>
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

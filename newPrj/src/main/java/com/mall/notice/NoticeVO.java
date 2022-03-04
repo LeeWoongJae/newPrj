@@ -5,6 +5,7 @@ public class NoticeVO {
 	private String userId;
 	private String noticeTitle;
 	private String noticeContent;
+	
 	public String getNoticeNo() {
 		return noticeNo;
 	}
