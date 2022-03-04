@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mall.command.NoticePage;
 import com.mall.command.NoticeViewPage;
+import com.mall.command.ProductList;
 import com.mall.common.Command;
 import com.mall.common.MainPage;
 
@@ -30,10 +31,12 @@ public class FrontControll extends HttpServlet {
 
 
 	public void init(ServletConfig config) throws ServletException {
-		// 호출명 저장소
+		// 호출명 저장소 / com.mall.command package 에 넣으세요
 		map.put("/main.do", new MainPage());
 		map.put("/notice.do", new NoticePage());
 		map.put("/noticeView.do", new NoticeViewPage());
+		map.put("/productList.do", new ProductList());
+		
 	}
 
 
