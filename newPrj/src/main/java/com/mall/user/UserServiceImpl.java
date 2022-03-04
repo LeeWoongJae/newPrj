@@ -65,7 +65,25 @@ public class UserServiceImpl extends DAO implements UserSevice {
 
 	@Override
 	public userVO selectUser(userVO vo) {
-		
+		String sql = "select * from users where user_id=?";
+		try 
+		{
+			pstmt  = conn.prepareStatement(sql);
+			pstmt.setString(1, vo.getUser_id());
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				vo.setUser_id(rs.getString("user_id"));
+				vo.setUserName(rs.getString("username"));
+				vo.setAddress(rs.getString("address"));
+				vo.setIs_withRaw(rs.getString("is_withraw"));
+				vo;
+			}
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			close();
+		}
+				
 		return null;
 	}
 
