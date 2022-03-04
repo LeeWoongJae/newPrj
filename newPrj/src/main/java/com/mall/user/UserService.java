@@ -2,7 +2,7 @@ package com.mall.user;
 
 import java.util.List;
 
-public interface UserSevice {
+public interface UserService {
 
 	List<userVO> selectAllList();
 	// 전체조회 용

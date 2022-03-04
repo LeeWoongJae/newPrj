@@ -10,9 +10,9 @@ public class DAO {
 	private static String url = "jdbc:oracle:thin:@localhost:1521:xe";
 	private static String user = "prj";
 	private static String password = "prj";
-	private static Connection conn;
+	public static Connection conn;
 	
-	private DAO() {}
+	public DAO() {}
 	
 	public static Connection getInstance() {
 		try {

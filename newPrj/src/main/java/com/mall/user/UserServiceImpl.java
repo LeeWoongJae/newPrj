@@ -1,6 +1,9 @@
 package com.mall.user;
 
-import java.sql.Connection;
+
+
+import static com.mall.common.DAO.conn;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,13 +12,16 @@ import java.util.List;
 
 import com.mall.common.DAO;
 
-public class UserServiceImpl extends DAO implements UserSevice {
+
+
+public class UserServiceImpl extends DAO implements UserService {
 
 		private PreparedStatement pstmt ; 
 		private ResultSet rs;
-		
+
 	
-	
+
+
 	@Override
 	public List<userVO> selectAllList() {
 		List<userVO> users = new ArrayList();
@@ -75,8 +81,10 @@ public class UserServiceImpl extends DAO implements UserSevice {
 				vo.setUser_id(rs.getString("user_id"));
 				vo.setUserName(rs.getString("username"));
 				vo.setAddress(rs.getString("address"));
+				vo.setTel(rs.getString("tel"));;
 				vo.setIs_withRaw(rs.getString("is_withraw"));
-				vo;
+				vo.setAuthor(rs.getString("author"));
+				
 			}
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -84,12 +92,24 @@ public class UserServiceImpl extends DAO implements UserSevice {
 			close();
 		}
 				
-		return null;
+		return vo;
 	}
 
 	@Override
 	public int insertUser(userVO vo) {
-		// TODO Auto-generated method stub
+		
+		String sql = "insert into users values(?,?,?,?,?,?,?,?)";
+		int r = 0;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		
+		
+		
 		return 0;
 	}
 
