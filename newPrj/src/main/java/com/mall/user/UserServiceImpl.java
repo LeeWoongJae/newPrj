@@ -11,12 +11,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mall.common.DAO;
+import com.mall.common.DAOclose;
 
 
 
 public class UserServiceImpl extends DAO implements UserService {
-
-		private PreparedStatement pstmt ; 
+		private DAOclose daOclose = new DAOclose();
+		private PreparedStatement psmt ; 
 		private ResultSet rs;
 
 	
@@ -28,8 +29,8 @@ public class UserServiceImpl extends DAO implements UserService {
 		userVO vo;
 		String sql = "select * from users";
 		try {
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
 			while(rs.next()) {
 				vo  = new userVO();
 				vo.setUser_id(rs.getString("user_id"));
@@ -48,25 +49,25 @@ public class UserServiceImpl extends DAO implements UserService {
 		}catch (Exception e) {
 				e.printStackTrace();
 		}finally {
-			close();
+			daOclose.close(rs,psmt,conn);
 		}
 			
 			
 		return users;
 	}
 
-	private void close() {
-		try {
-			if (rs != null)
-				rs.close();
-			if (pstmt != null)
-				pstmt.close();
-			if (conn != null)
-				conn.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
+//	private void close() {
+//		try {
+//			if (rs != null)
+//				rs.close();
+//			if (pstmt != null)
+//				pstmt.close();
+//			if (conn != null)
+//				conn.close();
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//	}
 		
 
 	@Override
@@ -74,9 +75,9 @@ public class UserServiceImpl extends DAO implements UserService {
 		String sql = "select * from users where user_id=?";
 		try 
 		{
-			pstmt  = conn.prepareStatement(sql);
-			pstmt.setString(1, vo.getUser_id());
-			rs = pstmt.executeQuery();
+			psmt  = conn.prepareStatement(sql);
+			psmt.setString(1, vo.getUser_id());
+			rs = psmt.executeQuery();
 			while(rs.next()) {
 				vo.setUser_id(rs.getString("user_id"));
 				vo.setUserName(rs.getString("username"));
@@ -89,7 +90,7 @@ public class UserServiceImpl extends DAO implements UserService {
 		}catch (Exception e) {
 			e.printStackTrace();
 		}finally{
-			close();
+			daOclose.close(rs, psmt, conn);
 		}
 				
 		return vo;
@@ -101,34 +102,112 @@ public class UserServiceImpl extends DAO implements UserService {
 		String sql = "insert into users values(?,?,?,?,?,?,?,?)";
 		int r = 0;
 		try {
-			pstmt = conn.prepareStatement(sql);
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, vo.getUser_id());
+			psmt.setString(2, vo.getPwd());
+			psmt.setString(3, vo.getTel());
+			psmt.setString(4, vo.getAddress());
+			psmt.setString(5, vo.getIs_withRaw());
+			psmt.setString(6, vo.getAuthor());
+			psmt.setString(7, vo.getRegDate());
+			psmt.setString(8, vo.getUserName());
+			
+			r = psmt.executeUpdate();
+			System.out.println(r + "건이 등록");
+			
 			
 		}catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();
+		}finally {
+			daOclose.close(rs, psmt, conn);
 		}
+
 		
-		
-		
-		
-		return 0;
+		return r;
 	}
 
 	@Override
 	public int updatetUser(userVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+				String sql = "update users set pwd= ? , address=? , tel = ? where user_id=?";
+				int n = 0;
+				try {
+					psmt = conn.prepareStatement(sql);
+					psmt.setString(1, vo.getPwd());
+					psmt.setString(2, vo.getAddress());
+					psmt.setString(3, vo.getTel());
+					psmt.setString(4, vo.getUser_id());
+					
+					
+					n = psmt.executeUpdate();
+							
+				}catch (Exception e) {
+						e.printStackTrace();
+				}finally {
+					daOclose.close(rs, psmt, conn);
+				}
+		return n;
 	}
 
 	@Override
 	public int deleteUser(userVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		String sql = "delete from users where user_id=?";
+		int n = 0;
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, vo.getUser_id());
+			
+			n = psmt.executeUpdate();
+					
+			
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}		
+		finally {
+			daOclose.close(rs, psmt, conn);
+		}
+	return n;
 	}
-
 	@Override
 	public userVO loginCheck(userVO vo) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select * from users where user_id=? and pwd=?";
+		try 
+		{
+			psmt= conn.prepareStatement(sql);
+			psmt.setString(1, vo.getUser_id());
+			psmt.setString(2, vo.getPwd());
+			
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				vo.setUserName(rs.getString("username"));
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			daOclose.close(rs, psmt, conn);
+		}
+		return vo;
+	}
+	public boolean idCheck(String user_id) {
+		boolean isId = false;
+		String sql = "select user_id from users where user_id=?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, user_id);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				isId = true;
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			daOclose.close(rs, psmt, conn);
+		}
+				
+		return isId;
 	}
 
 }

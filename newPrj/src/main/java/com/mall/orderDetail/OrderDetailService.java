@@ -6,11 +6,11 @@ public interface OrderDetailService {
 	// selectAll
 	List<OrderDetailVO> orderDetailList();
 	// select
-	OrderDetailVO orderDetailSelect();
+	OrderDetailVO orderDetailSelect(OrderDetailVO vo);
 	// update
-	int orderDetailUpdate();
+	public int orderDetailUpdate(OrderDetailVO vo);
 	// isnert
-	int orderDetailInsert();
+	public int orderDetailInsert(OrderDetailVO vo);
 	// delete
-	int orderDetailDelete();
+	public int orderDetailDelete(OrderDetailVO vo);
 }
