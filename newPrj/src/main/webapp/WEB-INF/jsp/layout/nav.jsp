@@ -30,6 +30,11 @@
           <a class="nav-link" href="signup.do">회원가입</a>
         </li>
         </c:if>
+        <c:if test="${id.substring(0,5) eq 'admin' }">
+        <li class="nav-item">
+          <a class="nav-link" href="noticeInsert.do">공지등록</a>
+        </li>
+        </c:if>
         <c:if test="${not empty id }">
         <li class="nav-item">
           <a class="nav-link" href="logOut.do">로그아웃</a>
