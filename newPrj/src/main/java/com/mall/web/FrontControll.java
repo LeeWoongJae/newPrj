@@ -11,9 +11,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mall.command.AjaxLoginCheck;
+import com.mall.command.LogOut;
+import com.mall.command.Login;
+import com.mall.command.LoginCheck;
 import com.mall.command.NoticePage;
 import com.mall.command.NoticeViewPage;
 import com.mall.command.ProductList;
+import com.mall.command.SignUp;
 import com.mall.common.Command;
 import com.mall.common.MainPage;
 
@@ -36,7 +41,11 @@ public class FrontControll extends HttpServlet {
 		map.put("/notice.do", new NoticePage());
 		map.put("/noticeView.do", new NoticeViewPage());
 		map.put("/productList.do", new ProductList());
-		
+		map.put("/signup.do", new SignUp());
+		map.put("/login.do", new Login());
+		map.put("/loginCheck.do", new LoginCheck());
+		map.put("/logOut.do", new LogOut());
+		// map.put("loginCheck.do", new AjaxLoginCheck());
 	}
 
 

@@ -1,4 +1,38 @@
 @charset "UTF-8";
+/* 공통사항 */
+body {
+	font-family: 'Noto Sans KR', sans-serif !important;
+	font-size: 16px !important;
+}
+a {
+	color: #222;
+	text-decoration: none;
+}
+ul {
+	padding: 0px;
+	margin: 0px;
+}
+ul li {
+	list-style: none;
+	padding: 0px;
+}
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+.mt8 {margin-top: 8px;}
+.mt20 {margin-top: 20px;}
+.mt36 {margin-top: 36px;}
+.mr8 {margin-right: 8px;}
+.mr20 {margin-right: 20px;}
+.mr36 {margin-right: 36px;}
+.ml8 {margin-left: 8px;}
+.ml20 {margin-left: 20px;}
+.ml36 {margin-left: 36px;}
+.mb8 {margin-bottom: 8px;}
+.mb20 {margin-bottom: 20px;}
+.mb36 {margin-bottom: 36px;}
 
 .header {
 	height: 100px;
@@ -15,6 +49,10 @@
 .navbar {
 	border-top: 1px solid #bbb;
 	border-bottom: 1px solid #bbb;
+}
+.logo {
+	font-family: 'Anton', sans-serif;
+	color: #222;
 }
 
 /* menu */

@@ -23,21 +23,21 @@ public class UserServiceImpl implements UserService {
 
 
 	@Override
-	public List<userVO> selectAllList() {
-		List<userVO> users = new ArrayList();
-		userVO vo;
+	public List<UserVO> selectAllList() {
+		List<UserVO> users = new ArrayList();
+		UserVO vo;
 		String sql = "select * from users";
 		try {
 			psmt = conn.prepareStatement(sql);
 			rs = psmt.executeQuery();
 			while(rs.next()) {
-				vo  = new userVO();
-				vo.setUser_id(rs.getString("user_id"));
+				vo  = new UserVO();
+				vo.setUserId(rs.getString("user_id"));
 				vo.setPwd(rs.getString("pwd"));
 				vo.setTel(rs.getString("tel"));
 				vo.setAddress(rs.getString("address"));
 				vo.setUserName(rs.getString("userName"));
-				vo.setIs_withRaw(rs.getString("is_withraw"));
+				vo.setIsWithRaw(rs.getString("is_withraw"));
 				vo.setAuthor(rs.getString("author"));
 				vo.setRegDate(rs.getString("regdate"));
 				
@@ -70,19 +70,19 @@ public class UserServiceImpl implements UserService {
 		
 
 	@Override
-	public userVO selectUser(userVO vo) {
+	public UserVO selectUser(UserVO vo) {
 		String sql = "select * from users where user_id=?";
 		try 
 		{
 			psmt  = conn.prepareStatement(sql);
-			psmt.setString(1, vo.getUser_id());
+			psmt.setString(1, vo.getUserId());
 			rs = psmt.executeQuery();
 			while(rs.next()) {
-				vo.setUser_id(rs.getString("user_id"));
+				vo.setUserId(rs.getString("user_id"));
 				vo.setUserName(rs.getString("username"));
 				vo.setAddress(rs.getString("address"));
 				vo.setTel(rs.getString("tel"));;
-				vo.setIs_withRaw(rs.getString("is_withraw"));
+				vo.setIsWithRaw(rs.getString("is_withraw"));
 				vo.setAuthor(rs.getString("author"));
 				
 			}
@@ -96,17 +96,17 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int insertUser(userVO vo) {
+	public int insertUser(UserVO vo) {
 		
 		String sql = "insert into users values(?,?,?,?,?,?,?,?)";
 		int r = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, vo.getUser_id());
+			psmt.setString(1, vo.getUserId());
 			psmt.setString(2, vo.getPwd());
 			psmt.setString(3, vo.getTel());
 			psmt.setString(4, vo.getAddress());
-			psmt.setString(5, vo.getIs_withRaw());
+			psmt.setString(5, vo.getIsWithRaw());
 			psmt.setString(6, vo.getAuthor());
 			psmt.setString(7, vo.getRegDate());
 			psmt.setString(8, vo.getUserName());
@@ -126,7 +126,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int updatetUser(userVO vo) {
+	public int updatetUser(UserVO vo) {
 				String sql = "update users set pwd= ? , address=? , tel = ? where user_id=?";
 				int n = 0;
 				try {
@@ -134,7 +134,7 @@ public class UserServiceImpl implements UserService {
 					psmt.setString(1, vo.getPwd());
 					psmt.setString(2, vo.getAddress());
 					psmt.setString(3, vo.getTel());
-					psmt.setString(4, vo.getUser_id());
+					psmt.setString(4, vo.getUserId());
 					
 					
 					n = psmt.executeUpdate();
@@ -148,12 +148,12 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int deleteUser(userVO vo) {
+	public int deleteUser(UserVO vo) {
 		String sql = "delete from users where user_id=?";
 		int n = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, vo.getUser_id());
+			psmt.setString(1, vo.getUserId());
 			
 			n = psmt.executeUpdate();
 					
@@ -168,17 +168,20 @@ public class UserServiceImpl implements UserService {
 	return n;
 	}
 	@Override
-	public userVO loginCheck(userVO vo) {
+	public UserVO loginCheck(UserVO vo) {
 		String sql = "select * from users where user_id=? and pwd=?";
 		try 
 		{
 			psmt= conn.prepareStatement(sql);
-			psmt.setString(1, vo.getUser_id());
+			psmt.setString(1, vo.getUserId());
 			psmt.setString(2, vo.getPwd());
 			
 			rs = psmt.executeQuery();
 			if(rs.next()) {
 				vo.setUserName(rs.getString("username"));
+				vo.setAddress(rs.getString("address"));
+				vo.setTel(rs.getString("tel"));
+				vo.setRegDate(rs.getString("regdate"));
 			}
 			
 		}catch (Exception e) {
@@ -188,6 +191,7 @@ public class UserServiceImpl implements UserService {
 		}
 		return vo;
 	}
+	
 	public boolean idCheck(String user_id) {
 		boolean isId = false;
 		String sql = "select user_id from users where user_id=?";

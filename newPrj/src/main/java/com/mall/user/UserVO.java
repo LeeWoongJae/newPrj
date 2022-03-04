@@ -1,20 +1,20 @@
 package com.mall.user;
 
-public class userVO {
-		private String user_id;
+public class UserVO {
+		private String userId;
 		private String pwd;
 		private String tel;
 		private String address;
-		private String is_withRaw;
+		private String isWithRaw;
 		private String author;
 		private String regDate;
 		private String userName;
 		
-		public String getUser_id() {
-			return user_id;
+		public String getUserId() {
+			return userId;
 		}
-		public void setUser_id(String user_id) {
-			this.user_id = user_id;
+		public void setUserId(String userId) {
+			this.userId = userId;
 		}
 		public String getPwd() {
 			return pwd;
@@ -34,17 +34,11 @@ public class userVO {
 		public void setAddress(String address) {
 			this.address = address;
 		}
-		public String getUserName() {
-			return userName;
+		public String getIsWithRaw() {
+			return isWithRaw;
 		}
-		public void setUserName(String userName) {
-			this.userName = userName;
-		}
-		public String getIs_withRaw() {
-			return is_withRaw;
-		}
-		public void setIs_withRaw(String is_withRaw) {
-			this.is_withRaw = is_withRaw;
+		public void setIsWithRaw(String isWithRaw) {
+			this.isWithRaw = isWithRaw;
 		}
 		public String getAuthor() {
 			return author;
@@ -58,6 +52,14 @@ public class userVO {
 		public void setRegDate(String regDate) {
 			this.regDate = regDate;
 		}
+		public String getUserName() {
+			return userName;
+		}
+		public void setUserName(String userName) {
+			this.userName = userName;
+		}
+		
+	
 		
 }
 		

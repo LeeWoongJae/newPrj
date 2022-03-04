@@ -23,7 +23,10 @@
           <a class="nav-link" href="notice.do">공지사항</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="">회원가입</a>
+          <a class="nav-link" href="login.do">로그인</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="signup.do">회원가입</a>
         </li>
       </ul>
       <form class="d-flex">
