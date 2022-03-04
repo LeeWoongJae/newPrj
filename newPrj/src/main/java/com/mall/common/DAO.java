@@ -2,7 +2,6 @@ package com.mall.common;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.DriverPropertyInfo;
 
 public class DAO {
 
