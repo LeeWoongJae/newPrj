@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mall.command.NoticePage;
+import com.mall.command.NoticeViewPage;
 import com.mall.common.Command;
 import com.mall.common.MainPage;
 
@@ -30,6 +32,8 @@ public class FrontControll extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		// 호출명 저장소
 		map.put("/main.do", new MainPage());
+		map.put("/notice.do", new NoticePage());
+		map.put("/noticeView.do", new NoticeViewPage());
 	}
 
 

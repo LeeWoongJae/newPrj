@@ -17,6 +17,7 @@ public class DAO {
 		try {
 			Class.forName(driver);
 			conn = DriverManager.getConnection(url , user , password);
+			System.out.println("dao 연결");
 		}catch (Exception e) {
 			System.out.println("DB connect faild");
 		}
