@@ -1,8 +1,12 @@
 package com.mall.notice;
 
+import java.sql.Connection;
 import java.util.List;
 
+import com.mall.common.DAO;
+
 public class NoticeServiceImpl implements NoticeService {
+	private Connection conn = DAO.get
 
 	@Override
 	public List<NoticeVO> noticeList() {
