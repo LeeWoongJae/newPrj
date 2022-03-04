@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<form action="loginCheck.do" id="frm">
+<form action="signUpCheck.do" id="frm" method="get">
 	<input type="text" name="userId" id="userId" required>
 	<span> @ </span>
 	<input type="text" value="" name="mailVal" id="mailVal">
@@ -13,12 +13,9 @@
 	<input type="password" name="pwd" id="pwd" required><br>
 	<input type="text" name="tel" id="tel"><br>
 	<input type="text" name="address" id="address"><br>
-	<input type="text" name="userName" id="userName">
+	<input type="text" name="userName" id="userName">	
 
-	<!-- id 값 -->
-	<input type="hidden" name="submitId" id="submitId">
-
-	<button onclick="frmSubmit()">로그인</button>
+	<button>회원가입</button>
 </form>
 
 <script>
@@ -31,12 +28,5 @@
 			frm.mailVal.value = '';
 		}
 	})
-	// 제출 전 확인
-	function frmSubmit() {
-		let fid = frm.userId.value;
-		let sid = frm.mail.value;
-		let submitId = frm.submitId.value;
-		submitId = fid + '@' + sid;
-		console.log(submitId)
-	}
+	// 제출 전 확인 func
 </script>

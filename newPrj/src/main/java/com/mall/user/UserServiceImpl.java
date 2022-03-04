@@ -98,7 +98,7 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public int insertUser(UserVO vo) {
 		
-		String sql = "insert into users values(?,?,?,?,?,?,?,?)";
+		String sql = "insert into users values(?,?,?,?,?,?, SYSDATE,?)";
 		int r = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -108,8 +108,7 @@ public class UserServiceImpl implements UserService {
 			psmt.setString(4, vo.getAddress());
 			psmt.setString(5, vo.getIsWithRaw());
 			psmt.setString(6, vo.getAuthor());
-			psmt.setString(7, vo.getRegDate());
-			psmt.setString(8, vo.getUserName());
+			psmt.setString(7, vo.getUserName());
 			
 			r = psmt.executeUpdate();
 			System.out.println(r + "건이 등록");

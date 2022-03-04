@@ -22,12 +22,19 @@
         <li class="nav-item">
           <a class="nav-link" href="notice.do">공지사항</a>
         </li>
+        <c:if test="${empty id }">
         <li class="nav-item">
           <a class="nav-link" href="login.do">로그인</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="signup.do">회원가입</a>
         </li>
+        </c:if>
+        <c:if test="${not empty id }">
+        <li class="nav-item">
+          <a class="nav-link" href="logOut.do">로그아웃</a>
+        </li>
+        </c:if>
       </ul>
       <form class="d-flex">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
