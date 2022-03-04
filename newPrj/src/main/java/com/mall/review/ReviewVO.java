@@ -1,15 +1,15 @@
 package com.mall.review;
 
 public class ReviewVO {
-	private String review_no;
+	private String reviewNo;
 	private String userId;
 	private String revContent;
 	private String revDate;
 	public String getReview_no() {
-		return review_no;
+		return reviewNo;
 	}
 	public void setReview_no(String review_no) {
-		this.review_no = review_no;
+		this.reviewNo = review_no;
 	}
 	public String getUserId() {
 		return userId;

@@ -16,7 +16,7 @@ import com.mall.common.DAOclose;
 public class UserServiceImpl implements UserService {
 		private DAOclose daOclose = new DAOclose();
 		Connection conn = DAO.getInstance();
-		private PreparedStatement psmt ; 
+		private PreparedStatement psmt;
 		private ResultSet rs;
 
 	
@@ -32,12 +32,12 @@ public class UserServiceImpl implements UserService {
 			rs = psmt.executeQuery();
 			while(rs.next()) {
 				vo  = new userVO();
-				vo.setUser_id(rs.getString("user_id"));
+				vo.setUserId(rs.getString("user_id"));
 				vo.setPwd(rs.getString("pwd"));
 				vo.setTel(rs.getString("tel"));
 				vo.setAddress(rs.getString("address"));
 				vo.setUserName(rs.getString("userName"));
-				vo.setIs_withRaw(rs.getString("is_withraw"));
+				vo.setIsWithRaw(rs.getString("is_withraw"));
 				vo.setAuthor(rs.getString("author"));
 				vo.setRegDate(rs.getString("regdate"));
 				
@@ -75,14 +75,14 @@ public class UserServiceImpl implements UserService {
 		try 
 		{
 			psmt  = conn.prepareStatement(sql);
-			psmt.setString(1, vo.getUser_id());
+			psmt.setString(1, vo.getUserId());
 			rs = psmt.executeQuery();
 			while(rs.next()) {
-				vo.setUser_id(rs.getString("user_id"));
+				vo.setUserId(rs.getString("user_id"));
 				vo.setUserName(rs.getString("username"));
 				vo.setAddress(rs.getString("address"));
 				vo.setTel(rs.getString("tel"));;
-				vo.setIs_withRaw(rs.getString("is_withraw"));
+				vo.setIsWithRaw(rs.getString("is_withraw"));
 				vo.setAuthor(rs.getString("author"));
 				
 			}
@@ -102,11 +102,11 @@ public class UserServiceImpl implements UserService {
 		int r = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, vo.getUser_id());
+			psmt.setString(1, vo.getUserId());
 			psmt.setString(2, vo.getPwd());
 			psmt.setString(3, vo.getTel());
 			psmt.setString(4, vo.getAddress());
-			psmt.setString(5, vo.getIs_withRaw());
+			psmt.setString(5, vo.getIsWithRaw());
 			psmt.setString(6, vo.getAuthor());
 			psmt.setString(7, vo.getRegDate());
 			psmt.setString(8, vo.getUserName());
@@ -134,7 +134,7 @@ public class UserServiceImpl implements UserService {
 					psmt.setString(1, vo.getPwd());
 					psmt.setString(2, vo.getAddress());
 					psmt.setString(3, vo.getTel());
-					psmt.setString(4, vo.getUser_id());
+					psmt.setString(4, vo.getUserId());
 					
 					
 					n = psmt.executeUpdate();
@@ -153,7 +153,7 @@ public class UserServiceImpl implements UserService {
 		int n = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, vo.getUser_id());
+			psmt.setString(1, vo.getUserId());
 			
 			n = psmt.executeUpdate();
 					
@@ -173,7 +173,7 @@ public class UserServiceImpl implements UserService {
 		try 
 		{
 			psmt= conn.prepareStatement(sql);
-			psmt.setString(1, vo.getUser_id());
+			psmt.setString(1, vo.getUserId());
 			psmt.setString(2, vo.getPwd());
 			
 			rs = psmt.executeQuery();
