@@ -3,7 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-이미지<span>${vo.image }</span>
+이미지
+<img alt="" src="${vo.image }">
+
 제품명<span>${vo.pname }</span>
 가 격<span>${vo.price }</span>
 

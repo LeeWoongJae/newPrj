@@ -18,6 +18,7 @@ import com.mall.command.LoginCheck;
 import com.mall.command.NoticePage;
 import com.mall.command.NoticeViewPage;
 import com.mall.command.ProductList;
+import com.mall.command.ProductView;
 import com.mall.command.SignUp;
 import com.mall.command.SignUpCheck;
 import com.mall.common.Command;
@@ -41,13 +42,16 @@ public class FrontControll extends HttpServlet {
 		map.put("/main.do", new MainPage());
 		map.put("/notice.do", new NoticePage());
 		map.put("/noticeView.do", new NoticeViewPage());
-		map.put("/productList.do", new ProductList());
+		// login & signup
 		map.put("/signup.do", new SignUp());
 		map.put("/login.do", new Login());
 		map.put("/loginCheck.do", new LoginCheck());
 		map.put("/logOut.do", new LogOut());
 		map.put("/signUp.do", new SignUp());
 		map.put("/signUpCheck.do", new SignUpCheck());
+		// product
+		map.put("/productList.do", new ProductList());
+		map.put("/productView.do", new ProductView());
 		// map.put("loginCheck.do", new AjaxLoginCheck());
 	}
 

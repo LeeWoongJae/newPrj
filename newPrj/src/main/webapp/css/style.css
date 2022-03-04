@@ -64,7 +64,7 @@ ul li {
 .products_item {
 	overflow: hidden;
 }
-.products_item img {
+.products_item img, .products_item product__img {
 	width: 100%;
 }
 

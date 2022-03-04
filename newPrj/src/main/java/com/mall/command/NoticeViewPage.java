@@ -20,10 +20,10 @@ public class NoticeViewPage implements Command {
 		
 		NoticeVO vo = new NoticeVO();
 		vo = dao.noticeSelect(temp);
-		System.out.println("vo.noticeNo : " + vo.getNoticeNo());
-		System.out.println("vo.title : " + vo.getNoticeTitle());
-		System.out.println("vo.content : " + vo.getNoticeContent());
-		System.out.println("vo.userid : " + vo.getUserId());
+		//System.out.println("vo.noticeNo : " + vo.getNoticeNo());
+		//System.out.println("vo.title : " + vo.getNoticeTitle());
+		//System.out.println("vo.content : " + vo.getNoticeContent());
+		//System.out.println("vo.userid : " + vo.getUserId());
 		
 		// String noticeNo = request.getParameter("noticeNo");
 				

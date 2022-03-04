@@ -60,11 +60,10 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public ProductVO productSelect(ProductVO vo) {
-		String sql = "select * from products where pcode=?";
+		String sql = "SELECT * FROM PRODUCTS WHERE PCODE=?";
 		try {
 			psmt = conn.prepareStatement(sql);
-			psmt.setString(1, vo.getPcode());
-			
+			psmt.setString(1, vo.getPcode());			
 			
 			rs = psmt.executeQuery();
 			if(rs.next()) {
@@ -85,11 +84,10 @@ public class ProductServiceImpl implements ProductService {
 					
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
 		}finally {
 			daOclose.close(rs, psmt, conn);
-		}
-		
-		
+		}			
 		
 		return vo;
 	}

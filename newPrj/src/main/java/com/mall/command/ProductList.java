@@ -15,8 +15,6 @@ public class ProductList implements Command {
 		ProductService dao = new ProductServiceImpl();
 		request.setAttribute("productList", dao.productList());
 		
-		
-		
 		return "product/productList.tiles";
 	}
 
