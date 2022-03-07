@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+    
+    <!-- 
+    
+ <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
@@ -36,7 +39,8 @@
 </tr>
 
 <tr>
-<td align="center" colspan="2"><input type="submit" value="upload"></td>
+<td align="center" colspan="2">
+<button type="button" onClick="location.href='noticeInsert.do'" >등록하기</button></td>
 
 </table>
 
@@ -44,3 +48,4 @@
 
 </body>
 </html>
+  -->

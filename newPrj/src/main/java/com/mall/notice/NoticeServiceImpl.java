@@ -3,6 +3,7 @@ package com.mall.notice;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -92,9 +93,18 @@ public class NoticeServiceImpl implements NoticeService {
 	@Override
 	public int noticeInsert(NoticeVO vo) {
 		// 삽입 (seq 자동증가, user_id, notice_title, notice_content);
-		String sql = "insert into notice values (NOTICE_SEQ_NO.nextval, ?, ?, ?)";
+		String sql = "insert into notice values (notice_seq_no.nextval, ?, ?, ?)";
 		int n = 0;
 		try {
+//			// 시퀀스 조회
+//			Statement stmt = conn.createStatement();
+//			ResultSet rs = stmt.executeQuery("select notice_seq_no.nextval from dual");
+//			rs.next();
+//			String id = rs.getString(1);
+//			vo.setUserId(id);
+			
+			
+			//등록
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, vo.getUserId());
 			psmt.setString(2, vo.getNoticeTitle());

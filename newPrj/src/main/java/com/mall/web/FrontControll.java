@@ -19,6 +19,7 @@ import com.mall.command.MenuList;
 import com.mall.command.NoticeInsert;
 import com.mall.command.NoticeInsertCheck;
 import com.mall.command.NoticePage;
+import com.mall.command.NoticeUpdate;
 import com.mall.command.NoticeViewPage;
 import com.mall.command.ProductList;
 import com.mall.command.ProductView;
@@ -60,9 +61,12 @@ public class FrontControll extends HttpServlet {
 		// menu 출력
 		map.put("/menuList.do", new MenuList());
 		
-		// admin 환경에서  notice등록을 하는곳 (CKEditor)
+		// admin 환경에서  notice등록 폼 (CKEditor)
 		map.put("/noticeInsert.do", new NoticeInsert());
+		// admin 환경에서 내용을 삽입할 폼
 		map.put("/noticeInsertCheck.do", new NoticeInsertCheck());
+		// admin 환경에서 내용을 기입후 전체적인 리스트를 업데이트 할 폼
+		//map.put("/noticeUpdate.do" , new NoticeUpdate());
 		
 		
 	}

@@ -5,8 +5,9 @@
 번호: <span>${vo.noticeNo }</span><br>
 타이틀: <span>${vo.noticeTitle }</span><br>
 내용: <span>${vo.noticeContent }</span><br>
-작성자: 관리자
+작성자: Admin
 
+<br/>
 <a href="notice.do">리스트보기</a>
 	
 	
