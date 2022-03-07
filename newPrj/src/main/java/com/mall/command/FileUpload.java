@@ -15,12 +15,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-import com.google.gson.JsonObject;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.multipart.MultipartRequest;
+
+import com.google.gson.JsonObject;
+import com.oreilly.servlet.MultipartRequest;
+import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
+
 
 
 
@@ -35,31 +37,32 @@ public class FileUpload extends HttpServlet {
 
 		System.out.println("doPost call()");
 		String path = "c:/tmp";
+		
 
 		ServletContext sc = this.getServletContext();
-		path = sc.getRealPath("upload"); // 서버상경로.
-
+		path = sc.getRealPath("images/upload"); // 서버상경로.
 		MultipartRequest multi = //
 				new MultipartRequest(request, // 요청정보
 						path, // 저장위치
 						8 * 1024 * 1024, // 용량
 						"UTF-8", // 인코딩
-						new DefaultFileRenamePolicy());
+						new DefaultFileRenamePolicy()
+						);
 
-		Enumeration en = multi.getFileNames();
+		Enumeration en = (Enumeration) multi.getFileNames();
 		String author = multi.getParameter("author");
-		String title = multi.getParameter("title");
+		String title =  multi.getParameter("title");
 		String fileN = null;
 		while (en.hasMoreElements()) {
 			String name = (String) en.nextElement();
-			String fileName = multi.getFilesystemName(name);
+			String fileName =  multi.getFilesystemName(name);
 			fileN = fileName;
 			System.out.println("name: " + name + ", fileName: " + fileName);
 		}
 
 		json.addProperty("uploaded", 1);
 		json.addProperty("fileName", fileN);
-		json.addProperty("url", request.getContextPath() + "/upload/" + fileN);
+		json.addProperty("url", request.getContextPath() + "/images/upload/" + fileN);
 
 		response.getWriter().print(json);
 	}
