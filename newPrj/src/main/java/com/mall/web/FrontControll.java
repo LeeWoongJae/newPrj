@@ -15,6 +15,7 @@ import com.mall.command.AjaxLoginCheck;
 import com.mall.command.LogOut;
 import com.mall.command.Login;
 import com.mall.command.LoginCheck;
+import com.mall.command.MenuList;
 import com.mall.command.NoticeInsert;
 import com.mall.command.NoticeInsertCheck;
 import com.mall.command.NoticePage;
@@ -56,7 +57,8 @@ public class FrontControll extends HttpServlet {
 		map.put("/productView.do", new ProductView());
 		// map.put("loginCheck.do", new AjaxLoginCheck());
 		
-		
+		// menu 출력
+		map.put("/menuList.do", new MenuList());
 		
 		// admin 환경에서  notice등록을 하는곳 (CKEditor)
 		map.put("/noticeInsert.do", new NoticeInsert());
@@ -80,9 +82,14 @@ public class FrontControll extends HttpServlet {
 			if(viewPage.endsWith(".jsp")) {
 				viewPage = "WEB-INF/jsp/" + viewPage;
 			}
+			if (viewPage.startsWith("ajax:")) {
+				response.setContentType("text/html");
+				response.getWriter().append(viewPage.substring(5));
+				return;
+			}
 			RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 			dispatcher.forward(request, response);
-		}
+		} 
 		
 	}
 
