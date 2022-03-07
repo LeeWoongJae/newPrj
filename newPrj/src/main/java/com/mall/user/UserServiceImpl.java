@@ -24,7 +24,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<UserVO> selectAllList() {
-		List<UserVO> users = new ArrayList();
+		List<UserVO> users = new ArrayList<>();
 		UserVO vo;
 		String sql = "select * from users";
 		try {
