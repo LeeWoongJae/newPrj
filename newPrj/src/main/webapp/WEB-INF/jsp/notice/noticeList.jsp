@@ -8,7 +8,6 @@
 <c:forEach var="vo" items="${noticeList }">
 	<div class="col-12">
 		 <a href="noticeView.do?noticeNo=${vo.noticeNo }">
-			
 			<span>${vo.noticeNo }</span>
 			<span>${vo.userId }</span>
 			<span>${vo.noticeTitle }</span>

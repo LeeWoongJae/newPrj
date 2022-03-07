@@ -22,6 +22,8 @@
 <form action="noticeInsertCheck.do" method="post">
 <input type="hidden" name="writer" id="writer" value="${id }">
 
+
+
 <table border="1">
 
 <tr>
@@ -34,7 +36,7 @@
 <tr>
 
 <th>내용  </th>
-<td><textarea id="content" name="content" cols="60" rows="20"></textarea></td>
+<td width="1000"><textarea id="content" name="content" cols="60" rows="20"></textarea></td>
 
 </tr>
 </table>

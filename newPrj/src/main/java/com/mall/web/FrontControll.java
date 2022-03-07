@@ -65,8 +65,9 @@ public class FrontControll extends HttpServlet {
 		map.put("/noticeInsert.do", new NoticeInsert());
 		// admin 환경에서 내용을 삽입할 폼
 		map.put("/noticeInsertCheck.do", new NoticeInsertCheck());
+		
 		// admin 환경에서 내용을 기입후 전체적인 리스트를 업데이트 할 폼
-		//map.put("/noticeUpdate.do" , new NoticeUpdate());
+		map.put("/noticeUpdate.do" , new NoticeUpdate());
 		
 		
 	}
