@@ -22,6 +22,43 @@ public class ProductServiceImpl implements ProductService {
 	
 	
 	@Override
+	public List<ProductVO> productListCate(String cate) {
+		List<ProductVO> prodList = new ArrayList<>();
+		ProductVO   vo;
+		String sql = "SELECT * FROM PRODUCTS where category like ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, cate + "%");
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				vo = new ProductVO();
+				vo.setPcode(rs.getString("pcode"));
+				vo.setPname(rs.getString("pname"));
+				vo.setImage(rs.getString("image"));
+				vo.setMadein(rs.getString("madein"));
+				vo.setContent(rs.getString("content"));
+				vo.setPrice(rs.getString("price"));
+				vo.setInsert_date(rs.getString("insert_date"));
+				vo.setPcolor(rs.getString("pcolor"));
+				vo.setPsize(rs.getString("psize"));
+				vo.setCategory(rs.getString("category"));
+				vo.setStock(rs.getString("stock"));
+				vo.setIs_popular(rs.getString("is_popular"));
+				
+				
+				prodList.add(vo);
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}finally {
+				daOclose.close(rs, psmt, conn);
+				
+			}		
+		
+		return prodList;
+	}
+
+	@Override
 	public List<ProductVO> productList() {
 		List<ProductVO> prodList = new ArrayList<>();
 		ProductVO   vo;

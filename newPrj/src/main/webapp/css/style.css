@@ -59,6 +59,13 @@ ul li {
 .menu__list > li a {
 	display: block;
 }
+.menu__cate1 {
+	font-size: 18px;
+	font-weight: bold;
+	border-bottom: 1px solid #222;
+	padding: 0 0 8px 0;
+	margin: 20px 0 8px 0;
+}
 
 /* products */
 .products_item {
