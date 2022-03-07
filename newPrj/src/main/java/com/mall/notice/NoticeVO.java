@@ -30,6 +30,11 @@ public class NoticeVO {
 	public void setNoticeContent(String noticeContent) {
 		this.noticeContent = noticeContent;
 	}
+	@Override
+	public String toString() {
+		return "NoticeVO [noticeNo=" + noticeNo + ", userId=" + userId + ", noticeTitle=" + noticeTitle
+				+ ", noticeContent=" + noticeContent + "]";
+	}
 	
 	
 }
