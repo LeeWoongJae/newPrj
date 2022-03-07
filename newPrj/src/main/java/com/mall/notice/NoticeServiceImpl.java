@@ -32,7 +32,6 @@ public class NoticeServiceImpl implements NoticeService {
 				vo.setNoticeTitle(rs.getString("notice_title"));
 				vo.setNoticeContent(rs.getString("notice_content"));
 				vo.setUserId(rs.getString("user_id"));
-				System.out.println(rs.getString("notice_no"));
 				list.add(vo);
 			}
 		} catch (Exception e) {

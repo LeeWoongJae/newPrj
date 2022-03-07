@@ -25,7 +25,8 @@
 --------------------------------------------------------
  -->
 
-<nav class="menu">
+<!-- 
+<nav class="menu" id="menu">
 	<ul class="menu__list">
 		<li>
 			<a class="" href="productList.do">의복/신발/패션잡화</a>
@@ -43,3 +44,48 @@
 		</li>
 	</ul>
 </nav>
+ -->
+
+<nav class="menu" id="menu1">
+	<ul class="menu__list">
+
+	</ul>
+</nav>
+
+<script>
+	let menu = document.querySelector('#menu1 > ul');
+	// menu list ajax로 출력
+	window.onload = function () {
+		fetch('menuList.do?', {
+			method: 'POST',
+            headers: {'Content-type': 'application/x-www-form-urlencoded'},
+            body: 'id=hi'
+		})		
+		.then(res => {
+			console.log(res);
+			return res.json();
+		})
+		.then(res => {			
+			console.log(typeof res);
+			console.log(res);
+			
+			// print
+		  for(let i = 0; i< res.length; i++) {
+			    let li = document.createElement('li');
+			    if(res[i].fcName != null){
+				    let a = document.createElement('a');
+			    	a.innerText = res[i].fcName;
+				    li.append(a);
+			    }	
+			    let div = document.createElement('div');
+			    if(res[i].sc[0].scName != null) {
+					let a = document.createElement('a');
+					a.innerText = res[i].sc[0].scName;
+					div.append(a);					
+			    }
+			    li.append(div);
+				menu.append(li);
+			}
+		})
+	}
+</script>
