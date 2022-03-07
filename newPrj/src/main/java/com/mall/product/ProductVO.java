@@ -11,7 +11,7 @@ public class ProductVO {
 	private String pcolor;
 	private String psize;
 	private String category;
-	private String delivery_fee;
+	private String deliveryFee;
 	private String stock;
 	private String isPopular;
 	
@@ -54,11 +54,11 @@ public class ProductVO {
 	public void setPrice(String price) {
 		this.price = price;
 	}
-	public String getInsert_date() {
+	public String getinsertDate() {
 		return insertDate;
 	}
-	public void setInsert_date(String insert_date) {
-		this.insertDate = insert_date;
+	public void setinsertDate(String insertDate) {
+		this.insertDate = insertDate;
 	}
 	public String getPcolor() {
 		return pcolor;
@@ -78,11 +78,11 @@ public class ProductVO {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public String getDelivery_fee() {
-		return delivery_fee;
+	public String getdeliveryFee() {
+		return deliveryFee;
 	}
-	public void setDelivery_fee(String delivery_fee) {
-		this.delivery_fee = delivery_fee;
+	public void setdeliveryFee(String deliveryFee) {
+		this.deliveryFee = deliveryFee;
 	}
 	public String getStock() {
 		return stock;
@@ -90,11 +90,11 @@ public class ProductVO {
 	public void setStock(String stock) {
 		this.stock = stock;
 	}
-	public String getIs_popular() {
+	public String getisPopular() {
 		return isPopular;
 	}
-	public void setIs_popular(String is_popular) {
-		this.isPopular = is_popular;
+	public void setisPopular(String isPopular) {
+		this.isPopular = isPopular;
 	}
 	
 	

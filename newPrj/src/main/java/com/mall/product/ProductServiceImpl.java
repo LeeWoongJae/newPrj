@@ -22,6 +22,44 @@ public class ProductServiceImpl implements ProductService {
 	
 	
 	@Override
+	public List<ProductVO> productListCate(String cate) {
+		List<ProductVO> prodList = new ArrayList<>();
+		ProductVO   vo;
+		String sql = "SELECT * FROM PRODUCTS where category like ?";
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, cate + "%");
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				vo = new ProductVO();
+				vo.setPcode(rs.getString("pcode"));
+				vo.setPname(rs.getString("pname"));
+				vo.setImage(rs.getString("image"));
+				vo.setMadein(rs.getString("madein"));
+				vo.setContent(rs.getString("content"));
+				vo.setPrice(rs.getString("price"));
+				vo.setinsertDate(rs.getString("insert_date"));
+				vo.setPcolor(rs.getString("pcolor"));
+				vo.setPsize(rs.getString("psize"));
+				vo.setCategory(rs.getString("category"));
+				vo.setStock(rs.getString("stock"));
+				vo.setisPopular(rs.getString("is_popular"));
+				vo.setdeliveryFee(rs.getString("delivery_fee"));
+				
+				
+				prodList.add(vo);
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}finally {
+				daOclose.close(rs, psmt, conn);
+				
+			}		
+		
+		return prodList;
+	}
+
+	@Override
 	public List<ProductVO> productList() {
 		List<ProductVO> prodList = new ArrayList<>();
 		ProductVO   vo;
@@ -37,12 +75,12 @@ public class ProductServiceImpl implements ProductService {
 				vo.setMadein(rs.getString("madein"));
 				vo.setContent(rs.getString("content"));
 				vo.setPrice(rs.getString("price"));
-				vo.setInsert_date(rs.getString("insert_date"));
+				vo.setinsertDate(rs.getString("insert_date"));
 				vo.setPcolor(rs.getString("pcolor"));
 				vo.setPsize(rs.getString("psize"));
 				vo.setCategory(rs.getString("category"));
 				vo.setStock(rs.getString("stock"));
-				vo.setIs_popular(rs.getString("is_popular"));
+				vo.setisPopular(rs.getString("is_popular"));
 				
 				
 				prodList.add(vo);
@@ -73,12 +111,13 @@ public class ProductServiceImpl implements ProductService {
 				vo.setMadein(rs.getString("madein"));
 				vo.setContent(rs.getString("content"));
 				vo.setPrice(rs.getString("price"));
-				vo.setInsert_date(rs.getString("insert_date"));
+				vo.setinsertDate(rs.getString("insert_date"));
+				vo.setdeliveryFee(rs.getString("delivery_fee"));
 				vo.setPcolor(rs.getString("pcolor"));
 				vo.setPsize(rs.getString("psize"));
 				vo.setCategory(rs.getString("category"));
 				vo.setStock(rs.getString("stock"));
-				vo.setIs_popular(rs.getString("is_popular"));
+				vo.setisPopular(rs.getString("is_popular"));
 			
 			}
 					
@@ -105,7 +144,7 @@ public class ProductServiceImpl implements ProductService {
 			psmt.setString(5, vo.getPrice());
 			psmt.setString(6, vo.getCategory());
 			psmt.setString(7, vo.getStock());
-			psmt.setString(8, vo.getIs_popular());
+			psmt.setString(8, vo.getisPopular());
 			
 			psmt.setString(9, vo.getPcode());
 			
@@ -134,13 +173,13 @@ public class ProductServiceImpl implements ProductService {
 			psmt.setString(4, vo.getMadein());
 			psmt.setString(5, vo.getContent());
 			psmt.setString(6, vo.getPrice());
-			psmt.setString(7, vo.getInsert_date());
+			psmt.setString(7, vo.getinsertDate());
 			psmt.setString(8, vo.getPcolor());
 			psmt.setString(9, vo.getPsize());
 			psmt.setString(10, vo.getCategory());
-			psmt.setString(11, vo.getDelivery_fee());
+			psmt.setString(11, vo.getdeliveryFee());
 			psmt.setString(12, vo.getStock());
-			psmt.setString(13, vo.getIs_popular());
+			psmt.setString(13, vo.getisPopular());
 			
 			
 			

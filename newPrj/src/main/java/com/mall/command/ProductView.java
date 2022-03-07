@@ -16,12 +16,9 @@ public class ProductView implements Command {
 		
 		ProductVO temp = new ProductVO();
 		temp.setPcode(request.getParameter("pcode"));
-		System.out.println(request.getParameter("pcode"));
 		
 		ProductVO vo = new ProductVO();
 		vo = dao.productSelect(temp);
-		System.out.println("vo pcode : " + vo.getCategory());
-		System.out.println("vo category : " + vo.getCategory());
 		
 		request.setAttribute("vo", vo);
 		
