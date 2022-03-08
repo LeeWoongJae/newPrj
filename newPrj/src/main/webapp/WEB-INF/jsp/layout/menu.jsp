@@ -24,28 +24,6 @@
 	  |-002.002.002 = 기타가구	  
 --------------------------------------------------------
  -->
-
-<!-- 
-<nav class="menu" id="menu">
-	<ul class="menu__list">
-		<li>
-			<a class="" href="productList.do">의복/신발/패션잡화</a>
-			<div>
-				<a href="productList.do">남성복</a>
-				<a href="productList.do">여성복</a>
-			</div>
-		</li>
-		<li>
-			<a class="" href="productList.do">생활잡화</a>
-			<div>
-				<a href="productList.do">패브릭</a>
-				<a href="productList.do">가구/인테리어</a>
-			</div>
-		</li>
-	</ul>
-</nav>
- -->
-
 <nav class="menu" id="menu1">
 	<ul class="menu__list">
 
@@ -55,7 +33,7 @@
 <script>
 	let menu = document.querySelector('#menu1 > ul');
 	// menu list ajax로 출력
-	window.onload = function () {
+	document.addEventListener('DOMContentLoaded', function() {
 		fetch('menuList.do?', {
 			method: 'POST',
             headers: {'Content-type': 'application/x-www-form-urlencoded'},
@@ -77,6 +55,7 @@
 			let check2 = '';
 		  for(let i = 0; i< res.length; i++) {
 			    let li = document.createElement('li');
+			    
 			    if(res[i].fcName != null){
 			    	// 문자열 중복 확인
 			    	if(check.includes(res[i].fcName) == false) {
@@ -104,8 +83,8 @@
 				menu.append(li);
 			}
 		  console.log(check);
-		  	check = '';
+		  check = '';
 		  
 		})
-	}
+	})
 </script>

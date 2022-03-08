@@ -18,9 +18,44 @@ public class ProductServiceImpl implements ProductService {
 	
 	private DAOclose daOclose = new DAOclose();
 	private PreparedStatement psmt ; 
-	private ResultSet rs;
+	private ResultSet rs;	
 	
-	
+	@Override
+	public List<ProductVO> productListPopular() {
+		List<ProductVO> prodList = new ArrayList<>();
+		ProductVO   vo;
+		String sql = "select * from products where is_popular = 1";
+		try {
+			psmt = conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			while(rs.next()) {
+				vo = new ProductVO();
+				vo.setPcode(rs.getString("pcode"));
+				vo.setPname(rs.getString("pname"));
+				vo.setImage(rs.getString("image"));
+				vo.setMadein(rs.getString("madein"));
+				vo.setContent(rs.getString("content"));
+				vo.setPrice(rs.getString("price"));
+				vo.setinsertDate(rs.getString("insert_date"));
+				vo.setPcolor(rs.getString("pcolor"));
+				vo.setPsize(rs.getString("psize"));
+				vo.setCategory(rs.getString("category"));
+				vo.setStock(rs.getString("stock"));
+				vo.setisPopular(rs.getString("is_popular"));
+				vo.setdeliveryFee(rs.getString("delivery_fee"));				
+				
+				prodList.add(vo);
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}finally {
+				daOclose.close(rs, psmt, conn);
+				
+			}		
+		
+		return prodList;
+	}
+
 	@Override
 	public List<ProductVO> productListCate(String cate) {
 		List<ProductVO> prodList = new ArrayList<>();
@@ -180,9 +215,6 @@ public class ProductServiceImpl implements ProductService {
 			psmt.setString(11, vo.getdeliveryFee());
 			psmt.setString(12, vo.getStock());
 			psmt.setString(13, vo.getisPopular());
-			
-			
-			
 			
 			r= psmt.executeUpdate();
 			

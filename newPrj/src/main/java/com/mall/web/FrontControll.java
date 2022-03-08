@@ -15,6 +15,7 @@ import com.mall.command.AjaxLoginCheck;
 import com.mall.command.LogOut;
 import com.mall.command.Login;
 import com.mall.command.LoginCheck;
+import com.mall.command.MainProductList;
 import com.mall.command.MenuList;
 import com.mall.command.NoticeInsert;
 import com.mall.command.NoticeInsertCheck;
@@ -44,6 +45,9 @@ public class FrontControll extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		// 호출명 저장소 / com.mall.command package 에 넣으세요
 		map.put("/main.do", new MainPage());
+		// main page product list 출력
+		map.put("/mainProductList.do", new MainProductList());
+		
 		map.put("/notice.do", new NoticePage());
 		map.put("/noticeView.do", new NoticeViewPage());
 		// login & signup

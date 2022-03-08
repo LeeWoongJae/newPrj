@@ -4,6 +4,8 @@ import java.util.List;
 
 public interface ProductService {
 	// selectCate
+	List<ProductVO> productListPopular();	
+	// selectCate
 	List<ProductVO> productListCate(String cate);	
 	// selectAll
 	List<ProductVO> productList();

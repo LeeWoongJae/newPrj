@@ -30,10 +30,10 @@
 	<tiles:insertAttribute name="nav" />
 	<div class="container">	
 		<div class="content--outer row">
-			<div class="col-3">
+			<div class="col-2">
 			<tiles:insertAttribute name="menu" />
 			</div>
-			<div class="col-9">
+			<div class="col-10">
 			<tiles:insertAttribute name="body" />
 			</div>
 		</div>

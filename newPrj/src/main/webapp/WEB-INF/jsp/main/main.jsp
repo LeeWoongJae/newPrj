@@ -21,17 +21,47 @@
   </button>
 </div>
 
-<!-- print products list -->
-<div class="row">
-	<!-- 아이템 반복출력 부분 -->
-	<div class="col-3 products_item">
-		<a>
-			<img alt="..." src="images/products/product_ex.jpg">
-		</a>
-	</div>
+<!-- print products list | ajax 처리 -->
+<h6>인기상품</h6>
+<div class="row" id="productList">		
+	<!-- 출력 -->
 </div>
 
-<!-- 공지사항 notice -->
+<!-- 공지사항 notice | ajax 처리 -->
 <div>
 	
 </div>
+
+<script>
+	// product list
+	let list = document.querySelector('#productList');
+	document.addEventListener('DOMContentLoaded', function() {
+		fetch('mainProductList.do', {
+			method: 'post',
+			headers: {'Content-type': 'application/x-www-form-urlencoded'}
+		})
+		.then(res => res.json())
+		.then(res => {
+			console.log(res)
+			
+			for(let i=0; i<4; i++) {
+				let div = document.createElement('div');
+				div.setAttribute('class', 'col-3 products_item');
+				
+				let a = document.createElement('a');
+				a.setAttribute('href', 'productView.do?pcode='+res[i].pcode);
+				let img = document.createElement('img');
+				img.setAttribute('src', res[i].image);
+				let name = document.createElement('p');
+				name.innerText = res[i].pname;
+				let price = document.createElement('p');
+				price.innerText = res[i].price;
+				a.append(img, name, price);
+				
+				div.append(a);
+				
+				list.append(div);				
+			}			
+		})
+	}) 
+</script>

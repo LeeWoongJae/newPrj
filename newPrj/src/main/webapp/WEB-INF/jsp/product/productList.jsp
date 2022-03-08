@@ -22,8 +22,7 @@
 					<p>${vo.category }</p>
 				</a>
 			</div>			
-		</c:forEach>'
-		
+		</c:forEach>		
 	</div>
 
 </div>
