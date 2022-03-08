@@ -23,6 +23,7 @@ import com.mall.command.NoticeInsertCheck;
 import com.mall.command.NoticePage;
 import com.mall.command.NoticeUpdate;
 import com.mall.command.NoticeViewPage;
+import com.mall.command.ProductContentUpdate;
 import com.mall.command.ProductList;
 import com.mall.command.ProductView;
 import com.mall.command.SignUp;
@@ -76,6 +77,8 @@ public class FrontControll extends HttpServlet {
 		
 		// adminMain 페이지
 		map.put("/adminMain.do", new AdminMain());
+		// adminMain 페이지에 있는 제품을 수정하는 페이지
+		map.put("/productContentUpdate.do" , new ProductContentUpdate());
 		
 		
 	}

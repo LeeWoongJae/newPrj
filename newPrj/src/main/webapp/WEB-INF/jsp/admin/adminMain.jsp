@@ -15,7 +15,7 @@ function goProdList() {
 	<h3>상품리스트</h3>
 	</div>
 	
-	<form id="frm" name="frm"></form>
+	<form id="frm" name="frm"  method="post">
 	
 	<div>
 		<div>
@@ -41,7 +41,7 @@ function goProdList() {
 	<td>${prod.stock }</td>
 	<td>${prod.price }</td>
 	<td>${prod.pcode }</td>
-	<td>${prod.content }</td>
+	<td><button type="button" onclick="location.href='productContentUpdate.do'">수정</button></td>
 	
 	</tr>
 	<tr><td>Color : ${prod.pcolor }</td></tr>
@@ -54,6 +54,7 @@ function goProdList() {
 	<button type ="button" onclick="location.href='productList.do'">전체리스트</button>
 	
 	</div>
+	</form>
 </div>
 
   

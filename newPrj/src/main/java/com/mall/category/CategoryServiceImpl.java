@@ -75,13 +75,37 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public int insert(CategoryVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		String sql = "insert into category values(?,?,?,?,?,?)";
+		int n = 0;
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, vo.getFc());
+			psmt.setString(2, vo.getFcName());
+			psmt.setString(3, vo.getSc());
+			psmt.setString(4, vo.getScName());
+			psmt.setString(5, vo.getTc());
+			psmt.setString(6, vo.getTcName());
+			
+			n = psmt.executeUpdate();
+			
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			daOclose.close(rs, psmt, conn);
+		}
+				
+		
+		
+		
+		
+		return n;
 	}
 
 	@Override
 	public int update(CategoryVO vo) {
-		// TODO Auto-generated method stub
+			String sql = "update category set fc=?, sc=?, tc=? where ";
 		return 0;
 	}
 
