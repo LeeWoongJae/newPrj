@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.mall.command.AdminMain;
 import com.mall.command.AjaxLoginCheck;
 import com.mall.command.LogOut;
 import com.mall.command.Login;
@@ -72,6 +73,9 @@ public class FrontControll extends HttpServlet {
 		
 		// admin 환경에서 내용을 기입후 전체적인 리스트를 업데이트 할 폼
 		map.put("/noticeUpdate.do" , new NoticeUpdate());
+		
+		// adminMain 페이지
+		map.put("/adminMain.do", new AdminMain());
 		
 		
 	}

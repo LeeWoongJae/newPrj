@@ -1,51 +1,60 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-    <!-- 
-    
- <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="${pageContext.request.contextPath }/ckeditor/ckeditor.js"></script>
-	<script>
-		$(function () {
-			CKEDITOR.replace('content', {
-				filebrowserUploadUrl: "${pageContext.request.contextPath}/fileUpload"
-			})
-		});
-	</script>
+<!-- <script type="text/javascript">
+function goProdList() {
+		location.href="productView.do"
+}
+</script>
+ -->
+ 
+<!--  상품 리스트 view -->
+<div class="container">
+	<div>
+	<h3>상품리스트</h3>
+	</div>
+	
+	<form id="frm" name="frm"></form>
+	
+	<div>
+		<div>
+		<table class="table">
+	
+	<tr>
+	<th width="100">상품정보</th>
+	<th width="100">재고</th>
+	<th width="100">판매가</th>
+	<th width="100">제품코드</th>
+	<th width="100">상세내용</th>
+	</tr>
+		
+	
+		
+	<c:forEach var="prod" items="${prodList }">
+	<tr>
+	
+	<td>
+	<img alt="" src="${prod.image }">
+	</td>
+	<td>${prod.pname }</td>
+	<td>${prod.stock }</td>
+	<td>${prod.price }</td>
+	<td>${prod.pcode }</td>
+	<td>${prod.content }</td>
+	
+	</tr>
+	<tr><td>Color : ${prod.pcolor }</td></tr>
+	<tr><td>Size : ${prod.psize}</td></tr>
+	</c:forEach>
+		
+	</table>
+	
+	</div>
+	<button type ="button" onclick="location.href='productList.do'">전체리스트</button>
+	
+	</div>
+</div>
 
-
-</head>
-
-<body>
-<form action="noticeInsert.do" method="post">
-<input type="hidden" name="writer" id="writer" value="${id }">
-<table border="1">
-<tr>
-
-<th>제목</th>
-<td><input type="text" name="title" id="title"></td>
-
-</tr>
-
-<tr>
-<th>내용</th>
-<td><textarea id="content" name="content" cols="60" rows="20"></textarea></td>
-</tr>
-
-<tr>
-<td align="center" colspan="2">
-<button type="button" onClick="location.href='noticeInsert.do'" >등록하기</button></td>
-
-</table>
-
-</form>
-
-</body>
-</html>
-  -->
+  
+  

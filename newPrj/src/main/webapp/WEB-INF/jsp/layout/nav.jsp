@@ -22,6 +22,7 @@
         <li class="nav-item">
           <a class="nav-link" href="notice.do">공지사항</a>
         </li>
+       
         <c:if test="${empty id }">
         <li class="nav-item">
           <a class="nav-link" href="login.do">로그인</a>
@@ -34,6 +35,12 @@
         <c:if test="${not empty id }">
         <li class="nav-item">
           <a class="nav-link" href="logOut.do">로그아웃</a>
+        </li>
+        </c:if>
+        
+        <c:if test="${id.substring(0,5) == 'admin' }">
+        <li class="nav-item">
+          <a class="nav-link" href="adminMain.do">관리자</a>
         </li>
         </c:if>
       </ul>
