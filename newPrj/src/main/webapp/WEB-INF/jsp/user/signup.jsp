@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <div class="row text-center justify-content-center align-items-center hDisplay">
-	<div class="col-7">
+	<div class="col-8">
 		<div class="card">
 			<div class="card-body">
 				<h3>회원가입</h3>
@@ -11,19 +11,23 @@
 					<!-- id -->
 					<div class="form-group">
 						<div class="row align-items-center">
-							<div class="col-4">
+							<div class="col-3">
 								<input type="text" placeholder="id ..." name="userId" id="userId" class="form-control" required>
 							</div>					
-							<div class="col-1"><span>@</span></div>
-							<div class="col-4">
+							<div class="col-1 px-1"><span>@</span></div>
+							<div class="col-3 px-1">
 								<input type="text" value=""	name="mailVal" class="form-control" id="mailVal">
 							</div>				
-							<div class="col-3">
+							<div class="col-2 px-0">
 								<select	name="mail" id="mail">
 									<option value="">직접입력</option>
 									<option value="naver.com">naver.com</option>
 									<option value="daum.com">daum.com</option>
+									<option value="google.com">google.com</option>
 								</select>
+							</div>
+							<div class="col-3">
+								<input type="button" class="btn btn-dark btn-sm" onclick="idCheck()" value="중복체크" id="checkBtn">
 							</div>
 						</div>				 
 					</div>
@@ -39,18 +43,17 @@
 					<div class="form-group mt8">
 						<input type="text" name="userName" id="userName" placeholder="your name ..." class="form-control">
 					</div>
-
+					
+					<input type="hidden" value="0" id="validateVal">
+					
 					<!-- <button class="btn btn-secondary mt20">취소</button> -->
-					<button class="btn btn-primary mt20">회원가입</button>
 				</form>
+					<button class="btn btn-primary mt20" onclick="submitFrm()">회원가입</button>
 			</div>
 		</div>
 	</div>
 	<div class="col-2">&nbsp;</div>
 </div>
-
-
-
 
 <script>
 	// 아이디 주소값 입력
@@ -62,5 +65,51 @@
 			frm.mailVal.value = '';
 		}
 	})
+	
+	// id 중복 체크
+	function idCheck() {
+		let id = document.querySelector('#userId').value;
+		let mailVal = document.querySelector('#mailVal').value;
+		let submitVal = id + '@' + mailVal;
+		console.log(submitVal)
+		
+		if(id == '') {
+			alert('값을 입력하세요!')
+			return;
+		} else if(id.toUpperCase() == 'ADMIN') {
+			alert('사용할 수 없는 값입니다.')
+			return;
+		}
+		
+		fetch('loginCheck.do?', {
+			method: 'post',
+			headers: {'Content-type': 'application/x-www-form-urlencoded'},
+            body: 'id=' + submitVal
+		})
+		.then(res => res.text())
+		.then(res => {
+			console.log(res)
+			if(res == 'true') {
+				checkBtn.classList.replace('btn-dark', 'btn-danger')
+				checkBtn.value = '다시 체크'
+				window.alert('사용불가능한 아이디 입니다.')
+			}
+			if(res == 'false') {
+				checkBtn.classList.replace('btn-dark', 'btn-success')
+				checkBtn.classList.replace('btn-danger', 'btn-success')
+				checkBtn.value = '사용가능'
+				window.alert('사용가능한 아이디 입니다.')
+				validateVal.value = '1';
+			}
+		})
+	} 
 	// 제출 전 확인 func
+	function submitFrm() {
+		if (validateVal != '0') {
+			checkBtn.focus();
+			alert('id 중복체크를 해주세요');			
+		} else {
+			frm.submit();
+		}
+	}
 </script>

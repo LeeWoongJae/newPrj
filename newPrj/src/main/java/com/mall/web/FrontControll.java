@@ -61,7 +61,7 @@ public class FrontControll extends HttpServlet {
 		// product
 		map.put("/productList.do", new ProductList());
 		map.put("/productView.do", new ProductView());
-		// map.put("loginCheck.do", new AjaxLoginCheck());
+		map.put("/loginCheck.do", new AjaxLoginCheck());
 		
 		// menu 출력
 		map.put("/menuList.do", new MenuList());

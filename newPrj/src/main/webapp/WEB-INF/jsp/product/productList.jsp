@@ -3,17 +3,9 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-
-<div>
-	<h1>productList page</h1>
-</div>
-
-<span>${fc }</span>
-<span>${sc }</span>
-<span>${tc }</span>
-
 <div class="container">
 	<div class="row">
+		<div class="col-12">${categoryList.fcName }</div>
 		<c:forEach var="vo" items="${productList }">			
 			<div class="col-3 products_item">
 				<a href="productView.do?pcode=${vo.pcode }">
@@ -24,5 +16,5 @@
 			</div>			
 		</c:forEach>		
 	</div>
-
 </div>
+

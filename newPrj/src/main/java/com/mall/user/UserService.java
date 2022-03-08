@@ -16,5 +16,6 @@ public interface UserService {
 	// 회원 정보 삭제 or 숨김
 	public UserVO loginCheck(UserVO vo);
 	// 로그인 체크 
+	boolean idCheck(String user_id);
 	
 }
