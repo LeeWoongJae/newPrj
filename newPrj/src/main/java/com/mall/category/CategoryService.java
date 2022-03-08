@@ -7,7 +7,7 @@ public interface CategoryService {
 	// selectAll
 	List<CategoryVO> selectAll();
 	// select
-	CategoryVO select();
+	CategoryVO select(CategoryVO vo);
 	// insert
 	int insert(CategoryVO vo);
 	// update

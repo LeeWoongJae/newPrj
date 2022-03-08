@@ -68,9 +68,30 @@ public class CategoryServiceImpl implements CategoryService {
 	}
 
 	@Override
-	public CategoryVO select() {
-		// TODO Auto-generated method stub
-		return null;
+	public CategoryVO select(CategoryVO vo) {
+		// TODO Auto-generated method stub		
+		String sql = "select fcName, scName, tcname from category where UPPER(NVL(fc, 'NULL')) = UPPER(?) and UPPER(NVL(sc, 'NULL')) = UPPER(?) and UPPER(NVL(tc, 'NULL')) = UPPER(?)";
+		
+		try {
+			psmt = conn.prepareStatement(sql);
+			psmt.setString(1, vo.getFc());
+			psmt.setString(2, vo.getSc());
+			psmt.setString(3, vo.getTc());
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				vo.setFcName(rs.getString("fcname"));
+				vo.setScName(rs.getString("scname"));
+				vo.setTcName(rs.getString("tcname"));				
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			daOclose.close(rs, psmt, conn);
+		}
+		
+		return vo;
 	}
 
 	@Override

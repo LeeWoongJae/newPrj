@@ -191,6 +191,7 @@ public class UserServiceImpl implements UserService {
 		return vo;
 	}
 	
+	@Override
 	public boolean idCheck(String user_id) {
 		boolean isId = false;
 		String sql = "select user_id from users where user_id=?";
