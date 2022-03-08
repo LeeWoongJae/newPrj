@@ -16,7 +16,9 @@ public class LoginCheck implements Command {
 		UserServiceImpl dao = new UserServiceImpl();
 		// System.out.println(id + " " + pwd);
 		HttpSession session = request.getSession();
+		// 입력되어지는 ID
 		String id = request.getParameter("userId");
+		// 입력되어지는 PWD
 		String pwd = request.getParameter("pwd");
 		
 		UserVO vo = new UserVO();
@@ -24,6 +26,7 @@ public class LoginCheck implements Command {
 		vo.setPwd(pwd);
 		
 		vo = dao.loginCheck(vo);
+		
 		System.out.println(vo.getAddress());
 		request.setAttribute("user", vo);
 		
