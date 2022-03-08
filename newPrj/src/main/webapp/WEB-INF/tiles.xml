@@ -12,7 +12,12 @@
 		<put-attribute name="body" value="/WEB-INF/jsp/layout/home.jsp" />
 		<put-attribute name="foot" value="/WEB-INF/jsp/layout/foot.jsp" />
 	</definition>
-
+	
+	<definition name="WILDCARD:user/*" extends="home">
+		<put-attribute name="menu" value="/WEB-INF/jsp/layout/myMenu.jsp" />
+		<put-attribute name="body" value="/WEB-INF/jsp/user/{1}.jsp" />
+	</definition>
+	
 	<definition name="WILDCARD:*/*" extends="home">
 		<put-attribute name="body" value="/WEB-INF/jsp/{1}/{2}.jsp" />
 	</definition>

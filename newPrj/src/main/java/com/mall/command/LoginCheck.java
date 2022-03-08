@@ -21,6 +21,9 @@ public class LoginCheck implements Command {
 		// 입력되어지는 PWD
 		String pwd = request.getParameter("pwd");
 		
+		System.out.println("id" + request.getParameter("userId"));
+		System.out.println("pwd" + request.getParameter("pwd"));
+		
 		UserVO vo = new UserVO();
 		vo.setUserId(id);
 		vo.setPwd(pwd);
@@ -31,11 +34,11 @@ public class LoginCheck implements Command {
 		request.setAttribute("user", vo);
 		
 		String viewPage;
-		if(vo.getUserId() != null) {
+		if(vo.getUserName() != null) {
 			session.setAttribute("id", vo.getUserId());
-			viewPage = "user/loginCheck.tiles";
+			viewPage = "user/mypage.tiles";
 		} else {
-			viewPage = "main/main.tiles";
+			viewPage = "user/loginCheck.tiles";
 		}
 		
 		// 로그인 후 이동할 화면

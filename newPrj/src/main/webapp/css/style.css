@@ -34,6 +34,11 @@ ul li {
 .mb20 {margin-bottom: 20px;}
 .mb36 {margin-bottom: 36px;}
 
+.hDisplay {
+	min-height: calc(100vh - 100px - 116px - 80px);
+	margin: 0 0 58px 0;
+}
+
 .header {
 	height: 100px;
 }
