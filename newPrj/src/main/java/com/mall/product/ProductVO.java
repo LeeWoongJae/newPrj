@@ -96,6 +96,13 @@ public class ProductVO {
 	public void setisPopular(String isPopular) {
 		this.isPopular = isPopular;
 	}
+	@Override
+	public String toString() {
+		return "ProductVO [pcode=" + pcode + ", pname=" + pname + ", image=" + image + ", madein=" + madein
+				+ ", content=" + content + ", price=" + price + ", insertDate=" + insertDate + ", pcolor=" + pcolor
+				+ ", psize=" + psize + ", category=" + category + ", deliveryFee=" + deliveryFee + ", stock=" + stock
+				+ ", isPopular=" + isPopular + "]";
+	}
 	
 	
 	
