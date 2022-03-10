@@ -57,8 +57,9 @@ public class ProductList implements Command {
 		System.out.println("fc:" + vo.getFc());
 		System.out.println("sc:" + vo.getSc());
 		System.out.println("tc:" + vo.getTc());
+		System.out.println(input);
 		
-		request.setAttribute("categoryList", daoCate);
+		request.setAttribute("categoryList", daoCate.select(vo));
 		
 		request.setAttribute("productList", dao.productListCate(input));
 		

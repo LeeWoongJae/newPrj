@@ -19,7 +19,7 @@ public class AjaxLoginCheck implements Command {
 		System.out.println(check);
 		
 		String returnVal;
-		if(check != false) {
+		if(check == true) {
 			returnVal = "true";
 		} else {
 			returnVal = "false";
