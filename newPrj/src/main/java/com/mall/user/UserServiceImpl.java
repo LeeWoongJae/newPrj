@@ -193,15 +193,16 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public boolean idCheck(String user_id) {
-		boolean isId = false;
+		boolean isId = true;
 		String sql = "select user_id from users where user_id=?";
 		try {
 			psmt = conn.prepareStatement(sql);
 			psmt.setString(1, user_id);
 			rs = psmt.executeQuery();
 			
+			// 아이디 있으면 -> false, 없으면 -> true
 			if(rs.next()) {
-				isId = true;
+				isId = false;
 			}
 			
 		}catch (Exception e) {

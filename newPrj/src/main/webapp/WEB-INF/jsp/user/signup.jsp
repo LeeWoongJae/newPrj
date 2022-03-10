@@ -11,22 +11,22 @@
 					<!-- id -->
 					<div class="form-group">
 						<div class="row align-items-center">
-							<div class="col-3">
-								<input type="text" placeholder="id ..." name="userId" id="userId" class="form-control" required>
-							</div>					
-							<div class="col-1 px-1"><span>@</span></div>
-							<div class="col-3 px-1">
-								<input type="text" value=""	name="mailVal" class="form-control" id="mailVal">
-							</div>				
-							<div class="col-2 px-0">
-								<select	name="mail" id="mail">
-									<option value="">직접입력</option>
+							<div class="col-7">
+								<div class="input-group">
+									<input type="text" placeholder="id ..." name="userId" id="userId" class="form-control" required>
+									<span class="input-group-text">@</span>
+									<input type="text" value=""	name="mailVal" class="form-control" id="mailVal">
+								</div>
+							</div>							
+							<div class="col-3 px-0">
+								<select	name="mail" id="mail" class="form-select">
+									<option value="" selected>직접입력</option>
 									<option value="naver.com">naver.com</option>
 									<option value="daum.com">daum.com</option>
 									<option value="google.com">google.com</option>
 								</select>
 							</div>
-							<div class="col-3">
+							<div class="col-2 px-0">
 								<input type="button" class="btn btn-dark btn-sm" onclick="idCheck()" value="중복체크" id="checkBtn">
 							</div>
 						</div>				 
@@ -77,7 +77,7 @@
 			alert('값을 입력하세요!')
 			return;
 		} else if(id.toUpperCase() == 'ADMIN') {
-			alert('사용할 수 없는 값입니다.')
+			alert('admin은 사용할 수 없는 아이디 입니다.')
 			return;
 		}
 		
@@ -89,12 +89,13 @@
 		.then(res => res.text())
 		.then(res => {
 			console.log(res)
-			if(res == 'true') {
-				checkBtn.classList.replace('btn-dark', 'btn-danger')
-				checkBtn.value = '다시 체크'
-				window.alert('사용불가능한 아이디 입니다.')
-			}
 			if(res == 'false') {
+				checkBtn.classList.replace('btn-dark', 'btn-danger');
+				checkBtn.classList.replace('btn-success', 'btn-danger');
+				checkBtn.value = '다시 체크';
+				window.alert('사용불가능한 아이디 입니다.');
+			}
+			if(res == 'true') {
 				checkBtn.classList.replace('btn-dark', 'btn-success')
 				checkBtn.classList.replace('btn-danger', 'btn-success')
 				checkBtn.value = '사용가능'

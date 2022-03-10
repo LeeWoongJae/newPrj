@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mall.command.AdminMain;
 import com.mall.command.AjaxLoginCheck;
+import com.mall.command.CartList;
 import com.mall.command.LogOut;
 import com.mall.command.Login;
 import com.mall.command.LoginCheck;
@@ -63,6 +64,9 @@ public class FrontControll extends HttpServlet {
 		map.put("/productList.do", new ProductList());
 		map.put("/productView.do", new ProductView());
 		map.put("/ajaxloginCheck.do", new AjaxLoginCheck());
+		
+		// cart
+		map.put("/cartList.do", new CartList());
 		
 		// menu 출력
 		map.put("/menuList.do", new MenuList());

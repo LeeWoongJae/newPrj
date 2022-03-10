@@ -109,7 +109,7 @@ public class OrderDetailServiceImpl  implements OrderDetailService {
 
 	@Override
 	public int orderDetailInsert(OrderDetailVO vo) {
-		String sql ="insert into order_detail values(order_detail_seq_no.NEXTVAL,?,?,?,?,?,?,?,?)";
+		String sql ="insert into order_detail values(order_detail_seq_no.NEXTVAL,?,?,?,?,?,?, SYSDATE,?)";
 		int r = 0;
 		try {
 			psmt = conn.prepareStatement(sql);
@@ -118,16 +118,21 @@ public class OrderDetailServiceImpl  implements OrderDetailService {
 			psmt.setString(2, vo.getoPname());
 			psmt.setString(3, vo.getoColor());
 			psmt.setString(4, vo.getoSize());
-			psmt.setString(5, vo.getoPrice());
-			psmt.setString(6, vo.getoDate());
+			psmt.setString(5, vo.getoCnt());
+			psmt.setString(6, vo.getoPrice());
+			// psmt.setString(6, vo.getoDate());
 			psmt.setString(7, vo.getpCode());
 			
+			r = psmt.executeUpdate();
 			
 		} catch (Exception e) {
 			// TODO: handle exception
+			e.printStackTrace();
+		} finally {
+			daOclose.close(rs, psmt, conn);
 		}
 		
-		return 0;
+		return r;
 	}
 
 	@Override
