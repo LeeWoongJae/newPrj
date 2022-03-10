@@ -5,7 +5,7 @@
 	<div class="col-4 card">
 		<div class="card-body">
 			<h3>로그인</h3>
-			<form action="loginCheck.do" id="frm" method="post">
+			<form action="loginCheck.do" id="frm" method="get">
 				<div class="form-group">
 					<input placeholder="id ..." class="form-control" type="email" name="userId" id="userId"
 						required><br>

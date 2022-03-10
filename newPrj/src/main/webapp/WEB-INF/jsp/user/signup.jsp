@@ -81,7 +81,7 @@
 			return;
 		}
 		
-		fetch('loginCheck.do?', {
+		fetch('ajaxloginCheck.do?', {
 			method: 'post',
 			headers: {'Content-type': 'application/x-www-form-urlencoded'},
             body: 'id=' + submitVal
@@ -106,10 +106,10 @@
 	// 제출 전 확인 func
 	function submitFrm() {
 		if (validateVal != '0') {
+			frm.submit();
+		} else {
 			checkBtn.focus();
 			alert('id 중복체크를 해주세요');			
-		} else {
-			frm.submit();
 		}
 	}
 </script>

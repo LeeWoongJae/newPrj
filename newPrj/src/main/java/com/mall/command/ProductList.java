@@ -34,8 +34,9 @@ public class ProductList implements Command {
 			vo.setFc(fc);
 		}
 		if(request.getParameter("sc") != null) {
-			String sc = "sc" + request.getParameter("sc");		
+			String sc = request.getParameter("sc");		
 			vo.setSc(sc);
+			sc = "sc" + sc;
 			request.setAttribute("sc", sc);			
 			input += sc;
 		} else {
@@ -43,8 +44,9 @@ public class ProductList implements Command {
 			vo.setSc(sc);
 		}
 		if(request.getParameter("tc") != null) {
-			String tc = "tc" + request.getParameter("tc");			
+			String tc = request.getParameter("tc");			
 			vo.setTc(tc);
+			tc = "tc" + tc;
 			request.setAttribute("tc", tc);		
 			input += tc;
 		} else {
@@ -55,9 +57,9 @@ public class ProductList implements Command {
 		System.out.println("fc:" + vo.getFc());
 		System.out.println("sc:" + vo.getSc());
 		System.out.println("tc:" + vo.getTc());
+		System.out.println(input);
 		
-		System.out.println(daoCate.select(vo).getFcName());
-		// request.setAttribute("categoryList", );
+		request.setAttribute("categoryList", daoCate.select(vo));
 		
 		request.setAttribute("productList", dao.productListCate(input));
 		
