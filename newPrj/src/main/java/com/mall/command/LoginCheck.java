@@ -30,7 +30,7 @@ public class LoginCheck implements Command {
 		
 		vo = dao.loginCheck(vo);
 		
-		System.out.println(vo.getAddress());
+		System.out.println(vo.getUserName());
 		request.setAttribute("user", vo);
 		
 		String viewPage;
