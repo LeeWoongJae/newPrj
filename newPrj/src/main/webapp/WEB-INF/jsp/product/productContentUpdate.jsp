@@ -6,7 +6,7 @@
 
 <script type="text/javascript">
 	function delColor() {
-		$('#pcolorDiv').hide();
+		$('#pcolorDiv:last').hide();
 	}
 	function addColor() {
 		const addVal = document.getElementById('addColorVal').value;
@@ -71,7 +71,7 @@
 	<tr>
 	<td>
 	<select name="category" id="category">
-	<c:forEach var = "cat" items="category">
+	<c:forEach var = "cat" items="${ category}">
 	<option value="${cat.fc }">
 	</c:forEach>
 	</select>
@@ -79,7 +79,7 @@
 	
 	<td>
 	<select name="category" id="category">
-	<c:forEach var = "cat" items="category">
+	<c:forEach var = "cat" items="${ category}">
 	<option value="${cat.sc }">
 	</c:forEach>
 	</select>
@@ -87,7 +87,7 @@
 	
 	<td>
 	<select name="category" id="category">
-	<c:forEach var = "cat" items="category">
+	<c:forEach var = "cat" items="${ category}">
 	<option value="${cat.tc }">
 	</c:forEach>
 	</select>
@@ -108,7 +108,7 @@
 			</tr>
 			<tr>
 			<td><table class="prodSizeTable">
-			<c:forEach var="color" items="prodList">
+			<c:forEach var="color" items="${prodList}">
 				<tr id="pcolorTr1">
 				<td id="pcolorDiv">${color.pcolor }</td>
 				<td><button type="button" onclick="delColor">-</button></td>
