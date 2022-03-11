@@ -47,7 +47,6 @@ function goProdList() {
 	<tr><td>Color : ${prod.pcolor }</td></tr>
 	<tr><td>Size : ${prod.psize}</td></tr>
 	</c:forEach>
-		
 	</table>
 	
 	</div>
