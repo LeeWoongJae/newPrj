@@ -108,20 +108,20 @@
 				
 	
 		
-	<c:forEach var="prod" items="${list }">
-	<!--<c:if test="${prod.pcode eq productList.pcode }">-->
+	<c:forEach var="list" items="${prodCUList }">
+	
 		<tr>
 		<td>
-		<img alt="" src="${prod.image }">
+		<img alt="" src="${list.image }">
 		</td>
-		<td>${prod.pname }</td>
-		<td>${prod.price }<br/><input type="text"></td>
-		<td>${prod.deliveryFee }<br/><input type="text" value=""></td>
-		<td>${prod.madein }<br/><input type="text" value=""></td>
-		<td>${prod.pcode }</td>
+		<td>${list.pname }</td>
+		<td>${list.price }<br/><input type="text"></td>
+		<td>${list.deliveryFee }<br/></td>
+		<td>${list.madein }<br/><input type="text"></td>
+		<td>${list.pcode }</td>
 		
 		</tr>
-	<!--</c:if>-->
+	
 	</c:forEach>
 		
 		</table>
@@ -136,7 +136,7 @@
 	<tr>
 	<td>
 	<select name="category" id="cateFc">
-		<c:forEach var = "cat" items="${catelist }">
+		<c:forEach var = "cat" items="${category }">
 			<option value="${cat.fc }"></option>
 		</c:forEach>
 	</select>
@@ -144,7 +144,7 @@
 	
 	<td>
 	<select name="category" id="cateSc">
-		<c:forEach var = "cat" items="${catelist }">
+		<c:forEach var = "cat" items="${category }">
 			<option value="${cat.sc }"></option>
 	</c:forEach>
 	</select>
@@ -152,7 +152,7 @@
 	
 	<td>
 	<select name="category" id="cateTc">
-		 <c:forEach var = "cat" items="${catelist }"> 
+		 <c:forEach var = "cat" items="${category }"> 
 			<option value="${cat.tc }"></option>
 		 </c:forEach>
 		 </select>
@@ -177,14 +177,14 @@
 			<!-- color 옵션추가 / 제거 -->
 			<table id="prodColorTable">
 			
-			<c:forEach var="color" items="${list}">
+			<c:forEach var="color" items="${prodCUList}">
 			
 				<tr>
 				<td>${color.pcolor }</td>
 				<td><input type="button" id="delBtn" onclick="delColor()" value="-"></td>
 				</tr>
 			</c:forEach>
-			<tr id="addOptionTr">
+			<tr>
 			<td><input type="text" id="addColorVal" placeholder="옵션추가"></td>
 			<td><button type="button" class="addColorBtn" onclick="addColorRow()">+</button></td>
 			</tr>
@@ -194,29 +194,21 @@
 			<!-- size 옵션추가 / 제거 -->
 			<table id="prodSizeTable">
 			
-			<c:forEach var="size" items="${list}">
+			<c:forEach var="size" items="${prodCUList}">
 				<tr>
 				<td>${size.psize }</td>
 				<td><input type="button" id="delBtn" onclick="delSize()" value="-"></td>
 				</tr>
 			</c:forEach>
-			<tr id="addOptionTr">
+			<tr>
 			<td><input type="text" id="addSizeVal" placeholder="옵션추가"></td>
 			<td><button type="button" class="addSizeBtn" onclick="addSizeRow()">+</button></td>
 			</tr>
-			</table></td>
-			
-			
-			<td>
-			<table>
-			<c:forEach var="list" items="${list}">
-				<tr>
-				<td>${list.stock }</td>
-				</tr>
-			</c:forEach>
 			</table>
 			</td>
-
+			<c:forEach var="list" items="${prodCUList}">
+			<td>${list.stock }</td>
+			</c:forEach>
 			<td><input type="checkbox" name="popular" value="1" id="cbchk">
 			<input type="hidden" name="popular" value="0" id="hdchk" >
 			</td>

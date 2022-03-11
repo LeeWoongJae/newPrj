@@ -19,6 +19,7 @@ public class ProductContentUpdate implements Command {
 	@Override
 	public String run(HttpServletRequest request, HttpServletResponse response) {
 		response.setCharacterEncoding("utf-8");
+		
 		// ProductServiceImpl dao = new ProductServiceImpl();
 		// List<ProductVO> list = new ArrayList();
 		
@@ -35,17 +36,17 @@ public class ProductContentUpdate implements Command {
 		String pcode = request.getParameter("pcode");
 		String stock = request.getParameter("stock");
 		
-		ProductVO pvo = new ProductVO();
-		pvo.setImage(image);
-		pvo.setPname(pname);
-		pvo.setPrice(price);
-		pvo.setdeliveryFee(deliveryFee);
-		pvo.setMadein(madein);
-		pvo.setPcode(pcode);
-		pvo.setStock(stock);
+		ProductVO vo = new ProductVO();
+		vo.setImage(image);
+		vo.setPname(pname);
+		vo.setPrice(price);
+		vo.setdeliveryFee(deliveryFee);
+		vo.setMadein(madein);
+		vo.setPcode(pcode);
+		vo.setStock(stock);
 		
 		ProductService service = new ProductServiceImpl();
-		service.productUpdate(pvo);
+		service.productUpdate(vo);
 		
 		
 		
@@ -89,7 +90,7 @@ public class ProductContentUpdate implements Command {
 		
 		
 		
-		request.setAttribute("list", list);
+		request.setAttribute("prodCUList", list);
 //		request.setAttribute("catelist", daoCate.select(catevo));
 	
 		
