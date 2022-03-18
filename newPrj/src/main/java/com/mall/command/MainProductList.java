@@ -18,24 +18,24 @@ public class MainProductList implements Command {
 	public String run(HttpServletRequest request, HttpServletResponse response) {
 		// main page product list 출력 , 인기상품 체크된 제품만 출력
 		response.setCharacterEncoding("utf-8");
-		
+
 		ProductService dao = new ProductServiceImpl();
 		List<ProductVO> list = dao.productListPopular();
-		
+		int loopcnt  = list.size() > 4 ? 4:list.size();
 		// json 생성
 		JsonArray returnVal = new JsonArray();
-		
+
 		// 메인 페이지 출력할 제품 갯수
-		for(int i=0; i<4; i++) {
+		for (int i = 0; i < loopcnt; i++) {
 			JsonObject prod = new JsonObject();
 			prod.addProperty("pname", list.get(i).getPname());
 			prod.addProperty("image", list.get(i).getImage());
 			prod.addProperty("price", list.get(i).getPrice());
 			prod.addProperty("pcode", list.get(i).getPcode());
-			
+
 			returnVal.add(prod);
-		}		
-		
+		}
+
 		return "ajax:" + returnVal;
 	}
 

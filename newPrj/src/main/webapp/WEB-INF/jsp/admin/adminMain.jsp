@@ -41,7 +41,7 @@ function goProdList() {
 	<td>${prod.stock }</td>
 	<td>${prod.price }</td>
 	<td>${prod.pcode }</td>
-	<td><button type="button" onclick="location.href='productContentUpdate.do'">수정</button></td>
+	<td><button type="button" onclick="location.href='productContentUpdate.do?pcode=${prod.pcode}'">수정</button></td>
 	
 	</tr>
 	<tr><td>Color : ${prod.pcolor }</td></tr>

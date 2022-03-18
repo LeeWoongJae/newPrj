@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.mall.category.CategoryVO;
 import com.mall.common.DAO;
 import com.mall.common.DAOclose;
 
@@ -245,5 +246,7 @@ public class ProductServiceImpl implements ProductService {
 		}
 		return n;
 	}
+
+	
 
 }

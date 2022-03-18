@@ -3,6 +3,7 @@ package com.mall.category;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -126,8 +127,24 @@ public class CategoryServiceImpl implements CategoryService {
 
 	@Override
 	public int update(CategoryVO vo) {
-			String sql = "update category set fc=?, sc=?, tc=? where ";
-		return 0;
+			String sql = "update category set fc=?, sc=?, tc=? where fc=?";
+			int n = 0;
+			try {
+				psmt=conn.prepareStatement(sql);
+				psmt.setString(1, vo.getFc());
+				psmt.setString(2, vo.getSc());
+				psmt.setString(3, vo.getTc());
+				psmt.setString(4, vo.getFc());
+				
+				n = psmt.executeUpdate();
+						
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+			}finally {
+				daOclose.close(rs, psmt, conn);
+			}
+		return n;
 	}
 
 	@Override
@@ -135,5 +152,88 @@ public class CategoryServiceImpl implements CategoryService {
 		// TODO Auto-generated method stub
 		return 0;
 	}
+	
+	@Override
+	public List<CategoryVO> cateFcList() {
+		List<CategoryVO> cateFcList = new ArrayList<>();
+		CategoryVO vo;
+		String sql = "select distinct(NVL(fcname , ' ')) fcName from category";
+		try {
+			psmt=conn.prepareStatement(sql);
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				vo = new CategoryVO();
+				vo.setFcName(rs.getString("fcname"));
+				cateFcList.add(vo);
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}finally {
+				daOclose.close(rs, psmt, conn);
+				
+			}		
+		
+		return cateFcList;
+	}
+
+	@Override
+	public List<CategoryVO> cateScList(String cateFc) {
+		List<CategoryVO> cateScList = new ArrayList<>();
+		CategoryVO vo;
+		String sql = "select distinct(NVL(scName , ' ')) scName from category where fc =?";
+		try {
+			psmt=conn.prepareStatement(sql);
+			psmt.setString(1, cateFc);			
+			
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				vo = new CategoryVO();
+				
+				//vo.setSc(rs.getString("sc"));
+				vo.setScName(rs.getString("scName"));
+				cateScList.add(vo);	
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}finally {
+				daOclose.close(rs, psmt, conn);
+				
+			}		
+		
+		return cateScList;
+	}
+
+	@Override
+	public List<CategoryVO> cateTcList(String cateFc , String cateSc) {
+		List<CategoryVO> cateTcList = new ArrayList<>();
+		CategoryVO vo;
+		String sql = "select distinct(NVL(tcName,' ')) tcName from category where fc = ? and sc = ?";
+		try {
+			psmt=conn.prepareStatement(sql);
+			psmt.setString(1, cateFc);
+			psmt.setString(2, cateSc);
+			
+			
+			rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				vo = new CategoryVO();
+				//vo.setTc(rs.getString("tc"));
+				vo.setTcName(rs.getString("tcName"));
+				cateTcList.add(vo);
+				}
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}finally {
+				daOclose.close(rs, psmt, conn);
+				
+			}		
+		
+		return cateTcList;
+	}
+	
+	
 
 }

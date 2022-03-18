@@ -2,6 +2,8 @@ package com.mall.product;
 
 import java.util.List;
 
+import com.mall.category.CategoryVO;
+
 public interface ProductService {
 	// selectCate
 	List<ProductVO> productListPopular();	
@@ -17,4 +19,9 @@ public interface ProductService {
 	public int productInsert(ProductVO vo);
 	// delete
 	public int productDelete(ProductVO vo);
+	
+	
+	
+	
+	
 }
